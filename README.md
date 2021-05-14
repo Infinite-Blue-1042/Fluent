@@ -10,7 +10,7 @@ window rename app Resist App
 window size app 800 600
 window run app
 ```
-App is the name of our variable. You could easily specify ```window create screen``` and it would work just fine. You can have multiple windows this way.
+```app``` is the name of our variable. You could easily specify ```window create screen``` and it would work just fine. You can have multiple windows this way.
 
 ## Other
 ### Comments
