@@ -1,2 +1,2 @@
-# Write
-The writing app for the rOS in full functionality.
+# Fluent
+The official coding language to create apps in rOS.
