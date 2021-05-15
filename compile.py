@@ -30,7 +30,7 @@ with open(__file__) as file:
             elif command == 'rename':
                 error(2, False)
                 vars[param[0]].title(' '.join(param[1:]))
-            elif command == 'size':
+            elif command == 'resize':
                 error(3)
                 vars[param[0]].geometry(f'{param[1]}x{param[2]}')
             elif command == 'run':
