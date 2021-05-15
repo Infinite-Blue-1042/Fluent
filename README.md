@@ -1,6 +1,13 @@
 ![Fluent Logo](fluent.png)
 #
-The official coding language to create apps in rOS.
+The official coding language to create apps in rOS, Fluent Beta 0.3.
+
+## Installation
+To install, type the following.
+```
+$ git clone https://github.com/Resist-Tech/Fluent.git
+```
+Your code will be stored in the ```code.fl``` file. Running the ```compile.py``` will run the program.
 
 ## Commands
 ### Window
