@@ -22,7 +22,7 @@ place button x=50 y=50 width=50 height=50
 None of the describe parameters (eg. x, y) are required. They are set by default to 0, 0, 0, and 0 respective to the usual order.
 
 ### Entry
-The entry command creates multi-line input fields. Here is an example on how to use them.
+The entry command creates multi-line input fields. They are widgets. Here is an example on how to use them.
 ```
 window create app
 entry create app search
@@ -30,7 +30,7 @@ place search x=100 y=50 width=100 height=50
 ```
 
 ### Button
-The button command creates buttons. You place them wit the place command. Look at this example.
+The button command creates buttons. They are widgets. Look at this example.
 ```
 window create app
 button create app home
