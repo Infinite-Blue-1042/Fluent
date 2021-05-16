@@ -3,8 +3,7 @@
 # Token '#*#' means line for testing purposes.
 
 from tkinter import *
-import sys
-import re
+import sys, re
 
 
 class ParsingError(Exception):
