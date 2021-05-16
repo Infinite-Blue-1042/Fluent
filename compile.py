@@ -22,8 +22,11 @@ else:
     __file__ = 'code.fl'
 
 vars = {}
+line = 0
+
 with open(__file__) as file:
     for line in file:
+        line += 1
         if not line.strip() or line.startswith('//'):
             continue
 
