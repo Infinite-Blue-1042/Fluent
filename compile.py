@@ -31,7 +31,7 @@ with open(__file__) as file:
             continue
         
         # This line finds the comments using regex and the python re module
-        comments = re.findall("(\/\*[\w\'\s\r\n\*]*\*\/)|(\/\/[\w\s\']*)|(\<![\-\-\s\w\>\/]*\>)", line)
+        comments = re.findall("(\/\*[\w\'\s\r\n\*]*\*\/)|(\/\/[\w\s\']*)", line)
         if comments:
             for comment in comments:
                 for part in comment:
@@ -52,6 +52,14 @@ with open(__file__) as file:
             elif command == 'resize' or command == 'size':
                 check_error(3, line)
                 vars[param[0]].geometry(f'{param[1]}x{param[2]}')
+            elif command == 'not_resizable':
+                check_error(2, line)
+                if param[1] == "both":
+                    vars[param[0]].resizable(False, False)
+                elif param[1] == "x":
+                    vars[param[0]].resizable(False, True)
+                elif param[1] == "y":
+                    vars[param[0]].resizable(True, False)
             elif command == 'run':
                 check_error(1, line)
                 vars[param[0]].mainloop()
