@@ -55,7 +55,7 @@ Comments can be called by using `//`. They are useful when referencing or defini
 Inline comments can also be used. 
 ```
 window create app // creates app
-window rename /* rename command */ app Resist App
+window rename app /* Renames App */ Resist App
 window size app 800 600
 window run app
 ```
