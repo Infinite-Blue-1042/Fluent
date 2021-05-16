@@ -5,6 +5,8 @@ The official coding language to create apps in rOS, Fluent Beta 0.3.
 ## What's New
 New and improved comment system makes inline comments much easier. More widgets have been introduced, along with a universal way of placing them. It is now also your choice to make windows resizable with the x, y, or both.
 
+Beta 0.4 will be coming out and will feature more widgets, button commands, and socket.
+
 ## Installation
 To install, type the following.
 ```
