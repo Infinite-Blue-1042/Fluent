@@ -6,15 +6,18 @@ from tkinter import *
 import sys
 import re
 
+
 class ParsingError(Exception):
     pass
 
-def line_error(line):
-    raise ParsingError(f'Error on Line:\n{line}')
 
-def check_error(length, line, equal=True):
+def line_error():
+    quit(f'Error on Line {line_num}:\n{line}')
+
+
+def check_error(length, equal=True):
     if (len(param) != length and equal) or (len(param) < length and not equal):
-        raise ParsingError(f'Error on Line:\n{line}')
+        quit(f'Error on Line {line_num}:\n{line}')
 
 
 __author__ = 'Aarav Dave'
@@ -24,13 +27,15 @@ else:
     __file__ = 'code.fl'
 
 vars = {}
+line_num = 0
 
 with open(__file__) as file:
     for line in file:
+        line_num += 1
+
         if not line.strip() or line.startswith('//'):
             continue
-        
-        # This line finds the comments using regex and the python re module
+
         comments = re.findall("(\/\*[\w\'\s\r\n\*]*\*\/)|(\/\/[\w\s\']*)", line)
         if comments:
             for comment in comments:
@@ -38,35 +43,34 @@ with open(__file__) as file:
                     if part:
                         line = line.replace(part, "")
 
-
         command, *param = line.strip().split()
         if command == 'window':
             command, param = param[0], param[1:]
             if command == 'create':
-                check_error(1, line)
+                check_error(1)
                 vars[param[0]] = Tk()
                 vars[param[0]].title('app')
             elif command == 'rename':
-                check_error(2, line, False)
+                check_error(2, False)
                 vars[param[0]].title(' '.join(param[1:]))
             elif command == 'resize' or command == 'size':
-                check_error(3, line)
+                check_error(3)
                 vars[param[0]].geometry(f'{param[1]}x{param[2]}')
-            elif command == 'not_resizable':
-                check_error(2, line)
-                if param[1] == "both":
+            elif command == 'desize' or command == 'disable_size':
+                check_error(2)
+                if param[1] == 'all':
                     vars[param[0]].resizable(False, False)
-                elif param[1] == "x":
+                elif param[1] == 'x':
                     vars[param[0]].resizable(False, True)
-                elif param[1] == "y":
+                elif param[1] == 'y':
                     vars[param[0]].resizable(True, False)
             elif command == 'run':
-                check_error(1, line)
+                check_error(1)
                 vars[param[0]].mainloop()
             else:
-                line_error(line)
+                line_error()
         elif command == 'place':
-            check_error(1, line, False)
+            check_error(1, False)
             values = {'x': 0, 'y': 0, 'width': 50, 'height': 50}
             for value in param[1:]:
                 value = value.split('=')
@@ -75,16 +79,16 @@ with open(__file__) as file:
         elif command == 'button':
             command, param = param[0], param[1:]
             if command == 'create':
-                check_error(2, line)
+                check_error(2)
                 vars[param[1]] = Button(vars[param[0]])
             else:
-                line_error(line)
+                line_error()
         elif command == 'entry':
             command, param = param[0], param[1:]
             if command == 'create':
-                check_error(2, line)
+                check_error(2)
                 vars[param[1]] = Text(vars[param[0]])
             else:
-                line_error(line)
+                line_error()
         else:
-            line_error(line)
+            line_error()
