@@ -4,6 +4,7 @@
 
 from tkinter import *
 import sys
+import re
 
 class ParsingError(Exception):
     pass
@@ -23,12 +24,20 @@ else:
     __file__ = 'code.fl'
 
 vars = {}
-line = 0
 
 with open(__file__) as file:
     for line in file:
         if not line.strip() or line.startswith('//'):
             continue
+        
+        # This line finds the comments using regex and the python re module
+        comments = re.findall("(\/\*[\w\'\s\r\n\*]*\*\/)|(\/\/[\w\s\']*)|(\<![\-\-\s\w\>\/]*\>)", line)
+        if comments:
+            for comment in comments:
+                for part in comment:
+                    if part:
+                        line = line.replace(part, "")
+
 
         command, *param = line.strip().split()
         if command == 'window':
