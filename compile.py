@@ -55,7 +55,7 @@ with open(__file__) as file:
             elif command == 'resize' or command == 'size':
                 check_error(3)
                 vars[param[0]].geometry(f'{param[1]}x{param[2]}')
-            elif command == 'desize' or command == 'disable_size':
+            elif command == 'disable_resize':
                 check_error(2)
                 if param[1] == 'all':
                     vars[param[0]].resizable(False, False)

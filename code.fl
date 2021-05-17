@@ -1,5 +1,0 @@
-window create app
-window rename app Resist App
-window size app /*hi*/ 800 600
-window not_resizable app x
-window run app // hi
